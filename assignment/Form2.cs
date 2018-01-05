@@ -11,15 +11,15 @@ using System.Windows.Forms;
 
 namespace assignment
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
         SqlConnection mySqlConnection;
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
             populateListBox();
         }
-        
+
         public void cleartxtBoxes()
         {
             txtId.Text = txtName.Text = txtAddress.Text = "";
@@ -54,7 +54,7 @@ namespace assignment
                 cmdInsert.Parameters.AddWithValue("@Bug", Bug);
                 cmdInsert.Parameters.AddWithValue("@Cause", Cause);
                 cmdInsert.ExecuteNonQuery();
-                MessageBox.Show("Bug Reported, Thank you", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bug Reported, Thank you","Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException ex)
             {
@@ -65,7 +65,7 @@ namespace assignment
         public void populateListBox()
         {
             mySqlConnection =
-                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Gareth.DESKTOP-V17I0IV\source\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\source\buglist.mdf;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true");
 
             String selcmd = "SELECT [Id], [App], [Bug], [Cause] FROM bugList ORDER BY [App]";
 
@@ -88,7 +88,7 @@ namespace assignment
 
 
                 }
-                
+
             }
 
             catch (SqlException ex)
@@ -99,26 +99,17 @@ namespace assignment
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             if (checkInputs())
             {
 
                 String commandString = "INSERT INTO bugList([Id], [App], [Bug], [Cause]) VALUES (@ID, @App, @Bug, @Cause)";
 
-
                 insertRecord(txtId.Text, txtName.Text, txtAddress.Text, Cause.Text, commandString);
                 populateListBox();
                 cleartxtBoxes();
             }
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form3 f3 = new Form3();
-            f3.Show();
-            
-        }
+    }
     }
 }
