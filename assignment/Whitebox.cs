@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace assignment
 {
-    public partial class Form3 : Form
+    public partial class Whitebox : Form
     {
         SqlConnection mySqlConnection;
-        public Form3()
+        public Whitebox()
         {
             InitializeComponent();
         }

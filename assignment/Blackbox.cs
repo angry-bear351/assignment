@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace assignment
 {
-    public partial class Form1 : Form
+    public partial class Blackbox : Form
     {
         SqlConnection mySqlConnection;
-        public Form1()
+        public Blackbox()
         {
             InitializeComponent();
             populateListBox();
@@ -116,7 +116,7 @@ namespace assignment
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form3 f3 = new Form3();
+            Whitebox f3 = new Whitebox();
             f3.Show();
             
         }

@@ -1,6 +1,6 @@
 ﻿namespace assignment
 {
-    partial class Form3
+    partial class Whitebox
     {
         /// <summary>
         /// Required designer variable.

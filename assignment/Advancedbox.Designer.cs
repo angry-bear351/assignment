@@ -1,6 +1,6 @@
 ﻿namespace assignment
 {
-    partial class Form4
+    partial class Advancedbox
     {
         /// <summary>
         /// Required designer variable.

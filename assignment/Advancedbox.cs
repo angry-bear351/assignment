@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace assignment
 {
-    public partial class Form4 : Form
+    public partial class Advancedbox : Form
     {
-        public Form4()
+        public Advancedbox()
         {
             InitializeComponent();
         }

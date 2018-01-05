@@ -1,6 +1,6 @@
 ﻿namespace assignment
 {
-    partial class Form1
+    partial class Blackbox
     {
         /// <summary>
         /// Required designer variable.
