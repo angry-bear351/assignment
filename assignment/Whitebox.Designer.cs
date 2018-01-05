@@ -137,7 +137,7 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Line Number";
             // 
-            // Form3
+            // Whitebox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,8 +153,9 @@
             this.Controls.Add(this.codeBox);
             this.Controls.Add(this.methodBox);
             this.Controls.Add(this.classBox);
-            this.Name = "Form3";
+            this.Name = "Whitebox";
             this.Text = "Form3";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Whitebox_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

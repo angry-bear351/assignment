@@ -51,6 +51,12 @@
     <Compile Include="Blackbox.Designer.cs">
       <DependentUpon>Blackbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="launcher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="launcher.Designer.cs">
+      <DependentUpon>launcher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Blackbox.resx">
       <DependentUpon>Blackbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="launcher.resx">
+      <DependentUpon>launcher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>

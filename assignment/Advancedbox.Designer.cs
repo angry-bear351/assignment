@@ -109,7 +109,7 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Comments";
             // 
-            // Form4
+            // Advancedbox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,8 +122,9 @@
             this.Controls.Add(this.bugbox);
             this.Controls.Add(this.appName);
             this.Controls.Add(this.label1);
-            this.Name = "Form4";
+            this.Name = "Advancedbox";
             this.Text = "Form4";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Advancedbox_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

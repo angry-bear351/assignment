@@ -16,5 +16,11 @@ namespace assignment
         {
             InitializeComponent();
         }
+
+        private void Advancedbox_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            launcher lc = new launcher();
+            lc.Show();
+        }
     }
 }

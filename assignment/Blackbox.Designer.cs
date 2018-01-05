@@ -133,7 +133,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form1
+            // Blackbox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -149,8 +149,9 @@
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lbxstudents);
-            this.Name = "Form1";
+            this.Name = "Blackbox";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Blackbox_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

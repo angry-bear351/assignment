@@ -16,7 +16,7 @@ namespace assignment
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Blackbox());
+            Application.Run(new launcher());
         }
     }
 }

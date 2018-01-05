@@ -71,5 +71,11 @@ namespace assignment
          cleartxtBoxes();
     }
     }
-}
+
+        private void Whitebox_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            launcher lc = new launcher();
+            lc.Show();
+        }
+    }
 }

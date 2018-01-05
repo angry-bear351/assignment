@@ -120,5 +120,11 @@ namespace assignment
             f3.Show();
             
         }
+
+        private void Blackbox_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            launcher lc = new launcher();
+            lc.Show();
+        }
     }
 }
