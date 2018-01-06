@@ -65,7 +65,7 @@ namespace assignment
         public void populateListBox()
         {
             mySqlConnection =
-                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Gareth.DESKTOP-V17I0IV\source\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
 
             String selcmd = "SELECT [Id], [App], [Bug], [Cause] FROM bugList ORDER BY [App]";
 

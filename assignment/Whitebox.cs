@@ -17,6 +17,21 @@ namespace assignment
         public Whitebox()
         {
             InitializeComponent();
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+            conn.Open();
+            SqlCommand sc = new SqlCommand("select App from Buglist", conn);
+            SqlDataReader reader;
+
+            reader = sc.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("App", typeof(string));
+            dt.Load(reader);
+
+            comboBox1.ValueMember = "App";
+            comboBox1.DisplayMember = "App";
+            comboBox1.DataSource = dt;
+
+            conn.Close();
         }
         public void cleartxtBoxes()
         {
@@ -76,6 +91,11 @@ namespace assignment
         {
             launcher lc = new launcher();
             lc.Show();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label4.Text = comboBox1.SelectedValue.ToString();
         }
     }
 }
