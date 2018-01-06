@@ -150,7 +150,7 @@
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lbxstudents);
             this.Name = "Blackbox";
-            this.Text = "Form1";
+            this.Text = "Black Box Testing";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Blackbox_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -75,22 +75,24 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(217, 218);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
+            this.radioButton1.Size = new System.Drawing.Size(72, 17);
             this.radioButton1.TabIndex = 4;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
+            this.radioButton1.Text = "Bug Fixed";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(217, 247);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
+            this.radioButton2.Size = new System.Drawing.Size(92, 17);
             this.radioButton2.TabIndex = 5;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
+            this.radioButton2.Text = "Bug Not Fixed";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // textBox2
             // 
@@ -123,7 +125,7 @@
             this.Controls.Add(this.appName);
             this.Controls.Add(this.label1);
             this.Name = "Advancedbox";
-            this.Text = "Form4";
+            this.Text = "Developer Box";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Advancedbox_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

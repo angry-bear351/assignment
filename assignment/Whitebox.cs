@@ -64,7 +64,7 @@ namespace assignment
         { if (checkInputs())
             {
 
-                String commandString = "INSERT INTO bugList([Class], [Method], [Code Block], [Line Number]) VALUES (@ID, @App, @Bug, @Cause)";
+                String commandString = "INSERT INTO bugList([Class], [Method], [Code Block], [Line Number]) VALUES (@Class, @Method, @Code Block, @Line Number)";
 
 
         insertRecord(classBox.Text, methodBox.Text, codeBox.Text, lineBox.Text, commandString);

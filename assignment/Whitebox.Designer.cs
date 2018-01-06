@@ -154,7 +154,7 @@
             this.Controls.Add(this.methodBox);
             this.Controls.Add(this.classBox);
             this.Name = "Whitebox";
-            this.Text = "Form3";
+            this.Text = "White Box Testing";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Whitebox_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
