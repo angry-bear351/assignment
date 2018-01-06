@@ -21,21 +21,26 @@ namespace assignment
         {
             Blackbox bb = new Blackbox();
             bb.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Whitebox wb = new Whitebox();
             wb.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Advancedbox ab = new Advancedbox();
             ab.Show();
-            this.Close();
+            this.Hide();
+        }
+
+        private void launcher_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
