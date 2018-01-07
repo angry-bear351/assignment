@@ -19,11 +19,13 @@ namespace assignment
             InitializeComponent();
             SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
             conn.Open();
-            SqlCommand sc = new SqlCommand("select App from Buglist", conn);
+            SqlCommand sc = new SqlCommand("select Id, App from Buglist", conn);
             SqlDataReader reader;
 
             reader = sc.ExecuteReader();
             DataTable dt = new DataTable();
+
+            dt.Columns.Add("Id", typeof(string));
             dt.Columns.Add("App", typeof(string));
             dt.Load(reader);
 
@@ -31,11 +33,11 @@ namespace assignment
             comboBox1.DisplayMember = "App";
             comboBox1.DataSource = dt;
 
-            conn.Close();
+            
         }
         public void cleartxtBoxes()
         {
-            classBox.Text = methodBox.Text = codeBox.Text = "";
+            classBox.Text = methodBox.Text = codeBox.Text = lineBox.Text = "";
         }
 
         public bool checkInputs()
@@ -54,36 +56,43 @@ namespace assignment
             return (rtnvalue);
 
         }
-        public void insertRecord(String Class, String Method, String Block, String Line, String commandString)
+        public void insertRecord(String Class, String Method, String Block, String Line, String App, String commandString)
+            
         {
+            mySqlConnection =
+                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
 
+            mySqlConnection.Open();
             try
             {
                 SqlCommand cmdInsert = new SqlCommand(commandString, mySqlConnection);
 
                 cmdInsert.Parameters.AddWithValue("@Class", Class);
                 cmdInsert.Parameters.AddWithValue("@Method", Method);
-                cmdInsert.Parameters.AddWithValue("@Code Block", Block);
-                cmdInsert.Parameters.AddWithValue("@Line Number", Line);
+                cmdInsert.Parameters.AddWithValue("@Code", Block);
+                cmdInsert.Parameters.AddWithValue("@Line", Line);
+                cmdInsert.Parameters.AddWithValue("@App", App);
                 cmdInsert.ExecuteNonQuery();
                 MessageBox.Show("Bug details commited, Thank you", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException ex)
             {
-                MessageBox.Show( " .." + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show( Class +" .." + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
+        
 
         private void Button2_Click(object sender, EventArgs e)
         { if (checkInputs())
             {
 
-                String commandString = "INSERT INTO bugList([Class], [Method], [Code Block], [Line Number]) VALUES (@Class, @Method, @Code Block, @Line Number)";
+                String commandString = "UPDATE bugList SET [Class] = @Class, [Method] = @Method, [Code Block] = @Code, [Line Number] = @Line  WHERE App = @App";
 
 
-        insertRecord(classBox.Text, methodBox.Text, codeBox.Text, lineBox.Text, commandString);
+            insertRecord(classBox.Text, methodBox.Text, codeBox.Text, lineBox.Text, label4.Text, commandString);
          cleartxtBoxes();
+
     }
     }
 

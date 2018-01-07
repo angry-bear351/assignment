@@ -17,21 +17,60 @@ namespace assignment
         public Advancedbox()
         {
             InitializeComponent();
-        }
-        public void insertRecord(String Fixed, String commandString)
-        {
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+            conn.Open();
+            SqlCommand sc = new SqlCommand("select App from Buglist", conn);
+            SqlDataReader reader;
 
+            reader = sc.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("App", typeof(string));
+            dt.Load(reader);
+
+            comboBox1.ValueMember = "App";
+            comboBox1.DisplayMember = "App";
+            comboBox1.DataSource = dt;
+
+            conn.Close();
+        }
+        public bool checkInputs()
+        {
+            bool rtnvalue = true;
+
+            if (string.IsNullOrEmpty(commentBox.Text))
+            {
+                MessageBox.Show("Error: Please check your inputs");
+                rtnvalue = false;
+            }
+
+            return (rtnvalue);
+
+        }
+        public void insertRecord(String Fixed, String Comments, String App, String commandString)
+        {
+            mySqlConnection =
+                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+
+            mySqlConnection.Open();
             try
             {
                 SqlCommand cmdInsert = new SqlCommand(commandString, mySqlConnection);
 
                 cmdInsert.Parameters.AddWithValue("@Fixed", Fixed);
+                cmdInsert.Parameters.AddWithValue("@Comments", Comments);
+                cmdInsert.Parameters.AddWithValue("@App", App);
+                cmdInsert.ExecuteNonQuery();
+                MessageBox.Show("Update Sucessful, Thank you", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException ex)
             {
-                MessageBox.Show( " .." + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(" .." + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+        public void cleartxtBoxes()
+        {
+            commentBox.Text = fixedBox.Text = "";
         }
 
         private void Advancedbox_FormClosed(object sender, FormClosedEventArgs e)
@@ -40,21 +79,24 @@ namespace assignment
             lc.Show();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String commandString = "INSERT INTO bugList([Class]) VALUES (@Fixed,)";
-
-
-            insertRecord("Y", commandString);
-
+            label3.Text = comboBox1.SelectedValue.ToString();
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            String commandString = "INSERT INTO bugList([Class]) VALUES (@Fixed,)";
+            if (checkInputs())
+            {
+
+                String commandString = "UPDATE bugList SET [fixed] = @Fixed, [Comments] = @Comments  WHERE App = @App";
 
 
-            insertRecord("N", commandString);
+                insertRecord(fixedBox.Text, commentBox.Text, label3.Text, commandString);
+                cleartxtBoxes();
+            }
         }
     }
 }
