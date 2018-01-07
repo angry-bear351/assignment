@@ -1,0 +1,11 @@
+<!doctype html><head><meta charset="utf-8" <title> Code Snippet </title> </head> <body><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">class</span> Singletons {
+    <span style="color:Blue;">public</span> <span style="color:Blue;">static</span> final MyException myException = <span style="color:Blue;">new</span> MyException();
+}
+
+<span style="color:Blue;">class</span> Test {
+    <span style="color:Blue;">public</span> <span style="color:Blue;">void</span> doSomething() throws MyException {
+        <span style="color:Blue;">throw</span> Singletons.myException;
+    }
+}
+</pre></div></body></html>

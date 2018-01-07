@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Advancedbox));
             this.label1 = new System.Windows.Forms.Label();
             this.bugbox = new System.Windows.Forms.ListBox();
             this.morebox = new System.Windows.Forms.ListBox();
@@ -182,6 +183,7 @@
             this.Controls.Add(this.morebox);
             this.Controls.Add(this.bugbox);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Advancedbox";
             this.Text = "Developer Box";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Advancedbox_FormClosed);

@@ -219,6 +219,7 @@
             this.Controls.Add(this.codeBox);
             this.Controls.Add(this.methodBox);
             this.Controls.Add(this.classBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Whitebox";
             this.Text = "White Box Testing";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Whitebox_FormClosed);

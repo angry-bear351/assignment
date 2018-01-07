@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Blackbox));
             this.lbxstudents = new System.Windows.Forms.ListBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
@@ -137,6 +138,7 @@
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lbxstudents);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Blackbox";
             this.Text = "Black Box Testing";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Blackbox_FormClosed);

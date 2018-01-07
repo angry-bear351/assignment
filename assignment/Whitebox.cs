@@ -28,7 +28,7 @@ namespace assignment
             /// the following code is used to assign data from the connected database to the drop down boxes used for selecting the application and the bug to ensure the data to be imputted is entered in the correct columns
             /// </summary>
 
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
             conn.Open();
             SqlCommand sc = new SqlCommand("select Id, App, Bug from Buglist", conn);
             SqlDataReader reader;
@@ -94,7 +94,7 @@ namespace assignment
             
         {
             mySqlConnection =
-                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
 
             mySqlConnection.Open();
             try
@@ -126,7 +126,7 @@ namespace assignment
             //txtSourceCode.Text = colourizedSourceCode;
 
             string html = ("<!doctype html><head><meta charset=\"utf-8\" <title> Code Snippet </title> </head> <body>" + colourizedSourceCode + "</body></html>");
-            System.IO.File.WriteAllText(@"F:\Source\Repos\ASE\BugTracker\BugTracker\Code.html", html);
+            System.IO.File.WriteAllText(@"C:\Users\Gareth.DESKTOP-V17I0IV\source\repos\assignment\assignment\Code.html", html);
         }
 
 
@@ -157,7 +157,7 @@ namespace assignment
         private void button1_Click(object sender, EventArgs e)
         {
             ColourCodeCSharp();
-            System.Diagnostics.Process.Start(@"F:\Source\Repos\ASE\BugTracker\BugTracker\Code.html");
+            System.Diagnostics.Process.Start(@"C:\Users\Gareth.DESKTOP-V17I0IV\source\repos\assignment\assignment\Code.html");
         }
     }
 }

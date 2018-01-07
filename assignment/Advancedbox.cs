@@ -24,7 +24,7 @@ namespace assignment
         {
             InitializeComponent();
             
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
             conn.Open();
             SqlCommand sc = new SqlCommand("select App from Buglist", conn);
             SqlDataReader reader;
@@ -64,7 +64,7 @@ namespace assignment
         public void populateListBox()
         {
             mySqlConnection =
-                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
             
             String selcmd = "SELECT  [Bug], [Cause], [Class], [Method], [Code Block], [Line Number], [Code Author] FROM bugList WHERE App = @app";
 
@@ -122,7 +122,7 @@ namespace assignment
         public void insertRecord(String Fixed, String Comments, String Name, String Date, String Bug, String commandString)
         {
             mySqlConnection =
-                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
 
             mySqlConnection.Open();
             try
@@ -158,7 +158,7 @@ namespace assignment
         public void archiveRecord(int Id,String App, String Bug, String Name, String Fixed, String Date, String commandString)
         {
             mySqlConnection =
-                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\bugList.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\bugList.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
 
             mySqlConnection.Open();
             try
