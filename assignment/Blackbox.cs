@@ -11,9 +11,15 @@ using System.Windows.Forms;
 
 namespace assignment
 {
+    /// <summary>
+    /// this is the first level of testing, the information from this is of a general level
+    /// </summary>
     public partial class Blackbox : Form
     {
         SqlConnection mySqlConnection;
+        /// <summary>
+        /// this sets the form up
+        /// </summary>
         public Blackbox()
         {
             InitializeComponent();
@@ -21,12 +27,17 @@ namespace assignment
             populateListBox();
             
         }
-        
+        /// <summary>
+        /// this clears the text boxes ready for the next set of data
+        /// </summary>
         public void cleartxtBoxes() 
         {
             txtId.Text = txtName.Text = txtAddress.Text = Cause.Text = "";
         }
-
+        /// <summary>
+        /// this checks the text boxes for data to avoid errors
+        /// </summary>
+        /// <returns></returns>
         public bool checkInputs() 
         {
             bool rtnvalue = true;
@@ -43,7 +54,14 @@ namespace assignment
 
         }
 
-
+        /// <summary>
+        /// this is the main function to push data from the form to the database
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="App"></param>
+        /// <param name="Bug"></param>
+        /// <param name="Cause"></param>
+        /// <param name="commandString"></param>
         public void insertRecord(String ID, String App, String Bug, String Cause, String commandString)
         {
 
@@ -66,7 +84,9 @@ namespace assignment
         }
         
 
-        
+        ///<summary>
+        ///this populates the list box with previously reported bugs
+        ///</summary> 
         
         public void populateListBox()
         {

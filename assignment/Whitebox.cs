@@ -11,12 +11,22 @@ using System.Windows.Forms;
 
 namespace assignment
 {
+    /// <summary>
+    /// This is the second stage testing screen for more indepth reporting
+    /// </summary>
     public partial class Whitebox : Form
     {
         SqlConnection mySqlConnection;
+        /// <summary>
+        /// These are the initial setup components
+        /// </summary>
         public Whitebox()
         {
             InitializeComponent();
+            /// <summary>
+            /// the following code is used to assign data from the connected database to the drop down boxes used for selecting the application and the bug to ensure the data to be imputted is entered in the correct columns
+            /// </summary>
+
             SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
             conn.Open();
             SqlCommand sc = new SqlCommand("select Id, App, Bug from Buglist", conn);
@@ -40,11 +50,19 @@ namespace assignment
 
 
         }
+        /// <summary>
+        /// this is used to make the text boxes empty, ready for the next set of data
+        /// </summary>
         public void cleartxtBoxes()
         {
             classBox.Text = methodBox.Text = codeBox.Text = lineBox.Text = "";
         }
-
+        /// <summary>
+        /// this ensures the text boxes are populated to ensure there are no error pertaining to null values
+        /// </summary>
+        /// <returns>
+        /// either TRUE or FALSE
+        /// </returns>
         public bool checkInputs()
         {
             bool rtnvalue = true;
@@ -61,6 +79,16 @@ namespace assignment
             return (rtnvalue);
 
         }
+        /// <summary>
+        /// this is the main method for this form, it is what pushes the data from the form to the database
+        /// </summary>
+        /// <param name="Class"></param>
+        /// <param name="Method"></param>
+        /// <param name="Block"></param>
+        /// <param name="Line"></param>
+        /// <param name="Author"></param>
+        /// <param name="Bug"></param>
+        /// <param name="commandString"></param>
         public void insertRecord(String Class, String Method, String Block, String Line, String Author, String Bug, String commandString)
             
         {

@@ -10,8 +10,14 @@ using System.Windows.Forms;
 
 namespace assignment
 {
+    /// <summary>
+    /// this is the launcher screen
+    /// </summary>
     public partial class launcher : Form
     {
+        /// <summary>
+        /// this handles the other forms and is the main application
+        /// </summary>
         public launcher()
         {
             InitializeComponent();

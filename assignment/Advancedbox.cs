@@ -11,9 +11,15 @@ using System.Windows.Forms;
 
 namespace assignment
 {
+    /// <summary>
+    /// this is the advanced screen for the main developer or programmer to see both the initial test report and the more in depth report.
+    /// </summary>
     public partial class Advancedbox : Form
     {
         SqlConnection mySqlConnection;
+        /// <summary>
+        /// this set of code sets up the form, and includes the code to populat the drop down boxes
+        /// </summary>
         public Advancedbox()
         {
             InitializeComponent();
@@ -35,6 +41,10 @@ namespace assignment
             conn.Close();
             populateListBox();
         }
+        /// <summary>
+        /// this checks the text boxes are populated to avoid errors
+        /// </summary>
+        /// <returns></returns>
         public bool checkInputs()
         {
             bool rtnvalue = true;
@@ -48,6 +58,9 @@ namespace assignment
             return (rtnvalue);
 
         }
+        /// <summary>
+        /// this code puts the data from the previous two screens into two seperate boxes for the developer to see.
+        /// </summary>
         public void populateListBox()
         {
             mySqlConnection =
@@ -97,6 +110,15 @@ namespace assignment
             }
 
         }
+        /// <summary>
+        /// this code pushes datta to the main database regarding that status of the current bugs,
+        /// </summary>
+        /// <param name="Fixed"></param>
+        /// <param name="Comments"></param>
+        /// <param name="Name"></param>
+        /// <param name="Date"></param>
+        /// <param name="Bug"></param>
+        /// <param name="commandString"></param>
         public void insertRecord(String Fixed, String Comments, String Name, String Date, String Bug, String commandString)
         {
             mySqlConnection =
@@ -123,6 +145,16 @@ namespace assignment
 
 
         }
+        /// <summary>
+        ///  This pushes some data to an archive database to keep track of the bugs history
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="App"></param>
+        /// <param name="Bug"></param>
+        /// <param name="Name"></param>
+        /// <param name="Fixed"></param>
+        /// <param name="Date"></param>
+        /// <param name="commandString"></param>
         public void archiveRecord(int Id,String App, String Bug, String Name, String Fixed, String Date, String commandString)
         {
             mySqlConnection =
@@ -149,6 +181,9 @@ namespace assignment
 
 
         }
+        /// <summary>
+        /// this clears the boxes ready for the next set of data input
+        /// </summary>
         public void cleartxtBoxes()
         {
             commentBox.Text = fixedBox.Text = "";
