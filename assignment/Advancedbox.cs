@@ -141,7 +141,7 @@ namespace assignment
                 String commandString = "UPDATE bugList SET [fixed] = @Fixed, [Comments] = @Comments  WHERE App = @App";
 
 
-                insertRecord(fixedBox.Text, commentBox.Text, label3.Text, commandString);
+                insertRecord(fixedBox.Text, commentBox.Text, comboBox1.Text, commandString);
                 cleartxtBoxes();
             }
         }

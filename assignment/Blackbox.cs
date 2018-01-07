@@ -17,15 +17,16 @@ namespace assignment
         public Blackbox()
         {
             InitializeComponent();
+            //generates a list of bugs reported
             populateListBox();
         }
         
-        public void cleartxtBoxes()
+        public void cleartxtBoxes() 
         {
             txtId.Text = txtName.Text = txtAddress.Text = "";
         }
 
-        public bool checkInputs()
+        public bool checkInputs() 
         {
             bool rtnvalue = true;
 
