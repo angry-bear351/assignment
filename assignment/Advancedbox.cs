@@ -17,6 +17,7 @@ namespace assignment
         public Advancedbox()
         {
             InitializeComponent();
+            
             SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
             conn.Open();
             SqlCommand sc = new SqlCommand("select App from Buglist", conn);
@@ -32,6 +33,7 @@ namespace assignment
             comboBox1.DataSource = dt;
 
             conn.Close();
+            populateListBox();
         }
         public bool checkInputs()
         {
@@ -44,6 +46,45 @@ namespace assignment
             }
 
             return (rtnvalue);
+
+        }
+        public void populateListBox()
+        {
+            mySqlConnection =
+                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+            
+            String selcmd = "SELECT  [Bug], [Cause] FROM bugList WHERE App = @app";
+
+            SqlCommand mySqlCommand = new SqlCommand(selcmd, mySqlConnection);
+            mySqlCommand.Parameters.AddWithValue("@app", comboBox1.Text);
+           
+            
+            
+
+            try
+            {
+                mySqlConnection.Open();
+
+                SqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
+
+                bugbox.Items.Clear();
+
+                while (mySqlDataReader.Read())
+                {
+
+                    bugbox.Items.Add("Bug: " + mySqlDataReader["Bug"]);
+                        bugbox.Items.Add( "Cause: " + mySqlDataReader["Cause"]);
+                    bugbox.Items.Add("********************");
+
+
+                }
+
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(" .." + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
         public void insertRecord(String Fixed, String Comments, String App, String commandString)
@@ -83,7 +124,7 @@ namespace assignment
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label3.Text = comboBox1.SelectedValue.ToString();
+            populateListBox();
         }
 
         private void button1_Click(object sender, EventArgs e)
