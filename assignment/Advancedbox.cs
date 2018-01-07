@@ -53,7 +53,7 @@ namespace assignment
             mySqlConnection =
                  new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
             
-            String selcmd = "SELECT  [Bug], [Cause] FROM bugList WHERE App = @app";
+            String selcmd = "SELECT  [Bug], [Cause], [Class], [Method], [Code Block], [Line Number] FROM bugList WHERE App = @app";
 
             SqlCommand mySqlCommand = new SqlCommand(selcmd, mySqlConnection);
             mySqlCommand.Parameters.AddWithValue("@app", comboBox1.Text);
@@ -68,6 +68,7 @@ namespace assignment
                 SqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
 
                 bugbox.Items.Clear();
+                morebox.Items.Clear();
 
                 while (mySqlDataReader.Read())
                 {
@@ -75,6 +76,11 @@ namespace assignment
                     bugbox.Items.Add("Bug: " + mySqlDataReader["Bug"]);
                         bugbox.Items.Add( "Cause: " + mySqlDataReader["Cause"]);
                     bugbox.Items.Add("********************");
+                    morebox.Items.Add("Class " + mySqlDataReader["Class"]);
+                    morebox.Items.Add("Method " + mySqlDataReader["Method"]);
+                    morebox.Items.Add("Code Block " + mySqlDataReader["Code Block"]);
+                    morebox.Items.Add("Line Number " + mySqlDataReader["Line Number"]);
+                    morebox.Items.Add("********************");
 
 
                 }

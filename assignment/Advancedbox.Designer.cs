@@ -34,7 +34,6 @@
             this.commentBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.fixedBox = new System.Windows.Forms.TextBox();
@@ -52,9 +51,9 @@
             // bugbox
             // 
             this.bugbox.FormattingEnabled = true;
-            this.bugbox.Location = new System.Drawing.Point(50, 103);
+            this.bugbox.Location = new System.Drawing.Point(15, 103);
             this.bugbox.Name = "bugbox";
-            this.bugbox.Size = new System.Drawing.Size(120, 95);
+            this.bugbox.Size = new System.Drawing.Size(155, 95);
             this.bugbox.TabIndex = 2;
             // 
             // morebox
@@ -62,7 +61,7 @@
             this.morebox.FormattingEnabled = true;
             this.morebox.Location = new System.Drawing.Point(182, 103);
             this.morebox.Name = "morebox";
-            this.morebox.Size = new System.Drawing.Size(120, 95);
+            this.morebox.Size = new System.Drawing.Size(160, 95);
             this.morebox.TabIndex = 3;
             // 
             // commentBox
@@ -91,15 +90,6 @@
             this.comboBox1.TabIndex = 8;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(345, 50);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "label3";
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(352, 223);
@@ -113,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(349, 79);
+            this.label4.Location = new System.Drawing.Point(230, 207);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 11;
@@ -121,7 +111,7 @@
             // 
             // fixedBox
             // 
-            this.fixedBox.Location = new System.Drawing.Point(348, 95);
+            this.fixedBox.Location = new System.Drawing.Point(229, 223);
             this.fixedBox.Name = "fixedBox";
             this.fixedBox.Size = new System.Drawing.Size(62, 20);
             this.fixedBox.TabIndex = 12;
@@ -134,7 +124,6 @@
             this.Controls.Add(this.fixedBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.commentBox);
@@ -157,7 +146,6 @@
         private System.Windows.Forms.TextBox commentBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox fixedBox;
