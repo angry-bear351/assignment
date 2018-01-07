@@ -56,7 +56,7 @@ namespace assignment
             return (rtnvalue);
 
         }
-        public void insertRecord(String Class, String Method, String Block, String Line, String App, String commandString)
+        public void insertRecord(String Class, String Method, String Block, String Line, String Author, String App, String commandString)
             
         {
             mySqlConnection =
@@ -71,6 +71,7 @@ namespace assignment
                 cmdInsert.Parameters.AddWithValue("@Method", Method);
                 cmdInsert.Parameters.AddWithValue("@Code", Block);
                 cmdInsert.Parameters.AddWithValue("@Line", Line);
+                cmdInsert.Parameters.AddWithValue("@Author", Author);
                 cmdInsert.Parameters.AddWithValue("@App", App);
                 cmdInsert.ExecuteNonQuery();
                 MessageBox.Show("Bug details commited, Thank you", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -87,10 +88,10 @@ namespace assignment
         { if (checkInputs())
             {
 
-                String commandString = "UPDATE bugList SET [Class] = @Class, [Method] = @Method, [Code Block] = @Code, [Line Number] = @Line  WHERE App = @App";
+                String commandString = "UPDATE bugList SET [Class] = @Class, [Method] = @Method, [Code Block] = @Code, [Line Number] = @Line, [Code Author] = @Author  WHERE App = @App";
 
 
-            insertRecord(classBox.Text, methodBox.Text, codeBox.Text, lineBox.Text, label4.Text, commandString);
+            insertRecord(classBox.Text, methodBox.Text, codeBox.Text, lineBox.Text, authorName.Text, comboBox1.Text, commandString);
          cleartxtBoxes();
 
     }
@@ -104,7 +105,7 @@ namespace assignment
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label4.Text = comboBox1.SelectedValue.ToString();
+            //label4.Text = comboBox1.SelectedValue.ToString();
         }
     }
 }

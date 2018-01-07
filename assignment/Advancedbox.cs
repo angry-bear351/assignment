@@ -53,7 +53,7 @@ namespace assignment
             mySqlConnection =
                  new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
             
-            String selcmd = "SELECT  [Bug], [Cause], [Class], [Method], [Code Block], [Line Number] FROM bugList WHERE App = @app";
+            String selcmd = "SELECT  [Bug], [Cause], [Class], [Method], [Code Block], [Line Number], [Code Author] FROM bugList WHERE App = @app";
 
             SqlCommand mySqlCommand = new SqlCommand(selcmd, mySqlConnection);
             mySqlCommand.Parameters.AddWithValue("@app", comboBox1.Text);
@@ -80,6 +80,7 @@ namespace assignment
                     morebox.Items.Add("Method " + mySqlDataReader["Method"]);
                     morebox.Items.Add("Code Block " + mySqlDataReader["Code Block"]);
                     morebox.Items.Add("Line Number " + mySqlDataReader["Line Number"]);
+                    morebox.Items.Add("Code Author " + mySqlDataReader["Code Author"]);
                     morebox.Items.Add("********************");
 
 
@@ -93,7 +94,7 @@ namespace assignment
             }
 
         }
-        public void insertRecord(String Fixed, String Comments, String App, String commandString)
+        public void insertRecord(String Fixed, String Comments, String Name, String Date, String App, String commandString)
         {
             mySqlConnection =
                  new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
@@ -105,6 +106,8 @@ namespace assignment
 
                 cmdInsert.Parameters.AddWithValue("@Fixed", Fixed);
                 cmdInsert.Parameters.AddWithValue("@Comments", Comments);
+                cmdInsert.Parameters.AddWithValue("@fName", Name);
+                cmdInsert.Parameters.AddWithValue("@Date", Date);
                 cmdInsert.Parameters.AddWithValue("@App", App);
                 cmdInsert.ExecuteNonQuery();
                 MessageBox.Show("Update Sucessful, Thank you", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -138,10 +141,10 @@ namespace assignment
             if (checkInputs())
             {
 
-                String commandString = "UPDATE bugList SET [fixed] = @Fixed, [Comments] = @Comments  WHERE App = @App";
+                String commandString = "UPDATE bugList SET [fixed] = @Fixed, [Comments] = @Comments, [Fixed By] = @fName, [Date Fixed] = @Date  WHERE App = @App";
 
 
-                insertRecord(fixedBox.Text, commentBox.Text, comboBox1.Text, commandString);
+                insertRecord(fixedBox.Text, commentBox.Text, fixedByBox.Text, dateBox.Text, comboBox1.Text, commandString);
                 cleartxtBoxes();
             }
         }
