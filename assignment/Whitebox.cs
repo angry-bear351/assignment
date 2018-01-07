@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ColorCode;
 
 namespace assignment
 {
@@ -115,7 +116,19 @@ namespace assignment
             }
 
         }
-        
+        /// <summary>
+        /// this generates the a view of the code block to identify the errors
+        /// </summary>
+        public void ColourCodeCSharp()
+        {
+
+            string colourizedSourceCode = new CodeColorizer().Colorize(txtSourceCodeView.Text, Languages.CSharp);
+            //txtSourceCode.Text = colourizedSourceCode;
+
+            string html = ("<!doctype html><head><meta charset=\"utf-8\" <title> Code Snippet </title> </head> <body>" + colourizedSourceCode + "</body></html>");
+            System.IO.File.WriteAllText(@"F:\Source\Repos\ASE\BugTracker\BugTracker\Code.html", html);
+        }
+
 
         private void Button2_Click(object sender, EventArgs e)
         { if (checkInputs())
@@ -139,6 +152,12 @@ namespace assignment
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //label4.Text = comboBox1.SelectedValue.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ColourCodeCSharp();
+            System.Diagnostics.Process.Start(@"F:\Source\Repos\ASE\BugTracker\BugTracker\Code.html");
         }
     }
 }

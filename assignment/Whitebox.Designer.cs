@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Whitebox));
             this.classBox = new System.Windows.Forms.TextBox();
             this.methodBox = new System.Windows.Forms.TextBox();
             this.codeBox = new System.Windows.Forms.TextBox();
@@ -43,6 +44,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtSourceCodeView = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // classBox
@@ -174,11 +177,33 @@
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 16;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(388, 429);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(157, 41);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "View Code";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtSourceCodeView
+            // 
+            this.txtSourceCodeView.Location = new System.Drawing.Point(377, 250);
+            this.txtSourceCodeView.Multiline = true;
+            this.txtSourceCodeView.Name = "txtSourceCodeView";
+            this.txtSourceCodeView.Size = new System.Drawing.Size(211, 127);
+            this.txtSourceCodeView.TabIndex = 18;
+            this.txtSourceCodeView.Text = resources.GetString("txtSourceCodeView.Text");
+            this.txtSourceCodeView.Visible = false;
+            // 
             // Whitebox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 603);
+            this.Controls.Add(this.txtSourceCodeView);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label7);
@@ -219,5 +244,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtSourceCodeView;
     }
 }
