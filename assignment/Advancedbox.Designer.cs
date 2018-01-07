@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dateBox = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -59,6 +60,7 @@
             this.bugbox.Name = "bugbox";
             this.bugbox.Size = new System.Drawing.Size(155, 95);
             this.bugbox.TabIndex = 2;
+            this.bugbox.SelectedIndexChanged += new System.EventHandler(this.bugbox_SelectedIndexChanged);
             // 
             // morebox
             // 
@@ -152,11 +154,21 @@
             this.dateBox.Size = new System.Drawing.Size(200, 20);
             this.dateBox.TabIndex = 16;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(260, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(26, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Bug";
+            // 
             // Advancedbox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 318);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.dateBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -193,5 +205,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateBox;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -73,8 +73,10 @@ namespace assignment
                 while (mySqlDataReader.Read())
                 {
 
-                    bugbox.Items.Add("Bug: " + mySqlDataReader["Bug"]);
-                        bugbox.Items.Add( "Cause: " + mySqlDataReader["Cause"]);
+                    bugbox.Items.Add("Bug: ");
+                    bugbox.Items.Add( mySqlDataReader["Bug"]);
+                    bugbox.Items.Add("Cause: ");
+                    bugbox.Items.Add(mySqlDataReader["Cause"]);
                     bugbox.Items.Add("********************");
                     morebox.Items.Add("Class " + mySqlDataReader["Class"]);
                     morebox.Items.Add("Method " + mySqlDataReader["Method"]);
@@ -82,6 +84,7 @@ namespace assignment
                     morebox.Items.Add("Line Number " + mySqlDataReader["Line Number"]);
                     morebox.Items.Add("Code Author " + mySqlDataReader["Code Author"]);
                     morebox.Items.Add("********************");
+                    
 
 
                 }
@@ -94,7 +97,7 @@ namespace assignment
             }
 
         }
-        public void insertRecord(String Fixed, String Comments, String Name, String Date, String App, String commandString)
+        public void insertRecord(String Fixed, String Comments, String Name, String Date, String Bug, String commandString)
         {
             mySqlConnection =
                  new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
@@ -104,11 +107,12 @@ namespace assignment
             {
                 SqlCommand cmdInsert = new SqlCommand(commandString, mySqlConnection);
 
+                
                 cmdInsert.Parameters.AddWithValue("@Fixed", Fixed);
                 cmdInsert.Parameters.AddWithValue("@Comments", Comments);
                 cmdInsert.Parameters.AddWithValue("@fName", Name);
                 cmdInsert.Parameters.AddWithValue("@Date", Date);
-                cmdInsert.Parameters.AddWithValue("@App", App);
+                cmdInsert.Parameters.AddWithValue("@Bug", Bug);
                 cmdInsert.ExecuteNonQuery();
                 MessageBox.Show("Update Sucessful, Thank you", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -116,6 +120,33 @@ namespace assignment
             {
                 MessageBox.Show(" .." + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
+        }
+        public void archiveRecord(int Id,String App, String Bug, String Name, String Fixed, String Date, String commandString)
+        {
+            mySqlConnection =
+                 new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\bugList.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
+
+            mySqlConnection.Open();
+            try
+            {
+                SqlCommand cmdInsert = new SqlCommand(commandString, mySqlConnection);
+
+                cmdInsert.Parameters.AddWithValue("@Id", Id);
+                cmdInsert.Parameters.AddWithValue("@Fixed", Fixed);
+                cmdInsert.Parameters.AddWithValue("@App", App);
+                cmdInsert.Parameters.AddWithValue("@Fixedby", Name);
+                cmdInsert.Parameters.AddWithValue("@Date", Date);
+                cmdInsert.Parameters.AddWithValue("@Bug", Bug);
+                cmdInsert.ExecuteNonQuery();
+                MessageBox.Show("Archive Sucessful, Thank you", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(" .." + ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
         public void cleartxtBoxes()
@@ -141,12 +172,23 @@ namespace assignment
             if (checkInputs())
             {
 
-                String commandString = "UPDATE bugList SET [fixed] = @Fixed, [Comments] = @Comments, [Fixed By] = @fName, [Date Fixed] = @Date  WHERE App = @App";
+                String commandString = "UPDATE bugList SET [fixed] = @Fixed, [Comments] = @Comments, [Fixed By] = @fName, [Date Fixed] = @Date  WHERE Bug = @Bug";
 
+                String commString = "INSERT INTO Archive([Id], [App], [Bug], [Fixed By], [Date Fixed]) VALUES (@Id, @App, @Bug, @Fixedby, @Date)";
+                insertRecord(fixedBox.Text, commentBox.Text, fixedByBox.Text, dateBox.Text, label6.Text, commandString);
 
-                insertRecord(fixedBox.Text, commentBox.Text, fixedByBox.Text, dateBox.Text, comboBox1.Text, commandString);
+                if (fixedBox.Text == "Y")
+                {
+                    int i = 0;
+                    archiveRecord(i++,comboBox1.Text, label6.Text, fixedByBox.Text, fixedBox.Text, dateBox.Text, commString);
+                }
                 cleartxtBoxes();
             }
+        }
+
+        private void bugbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label6.Text = bugbox.SelectedItem.ToString();
         }
     }
 }

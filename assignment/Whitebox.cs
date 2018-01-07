@@ -19,7 +19,7 @@ namespace assignment
             InitializeComponent();
             SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Helen\Downloads\buglist.mdf;Integrated Security=True;MultipleActiveResultSets=true;Connect Timeout=30");
             conn.Open();
-            SqlCommand sc = new SqlCommand("select Id, App from Buglist", conn);
+            SqlCommand sc = new SqlCommand("select Id, App, Bug from Buglist", conn);
             SqlDataReader reader;
 
             reader = sc.ExecuteReader();
@@ -27,13 +27,18 @@ namespace assignment
 
             dt.Columns.Add("Id", typeof(string));
             dt.Columns.Add("App", typeof(string));
+            dt.Columns.Add("Bug", typeof(string));
             dt.Load(reader);
 
             comboBox1.ValueMember = "App";
             comboBox1.DisplayMember = "App";
             comboBox1.DataSource = dt;
+            comboBox2.ValueMember = "Bug";
+            comboBox2.DisplayMember = "Bug";
+            comboBox2.DataSource = dt;
 
-            
+
+
         }
         public void cleartxtBoxes()
         {
@@ -56,7 +61,7 @@ namespace assignment
             return (rtnvalue);
 
         }
-        public void insertRecord(String Class, String Method, String Block, String Line, String Author, String App, String commandString)
+        public void insertRecord(String Class, String Method, String Block, String Line, String Author, String Bug, String commandString)
             
         {
             mySqlConnection =
@@ -72,7 +77,7 @@ namespace assignment
                 cmdInsert.Parameters.AddWithValue("@Code", Block);
                 cmdInsert.Parameters.AddWithValue("@Line", Line);
                 cmdInsert.Parameters.AddWithValue("@Author", Author);
-                cmdInsert.Parameters.AddWithValue("@App", App);
+                cmdInsert.Parameters.AddWithValue("@Bug", Bug);
                 cmdInsert.ExecuteNonQuery();
                 MessageBox.Show("Bug details commited, Thank you", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -88,10 +93,10 @@ namespace assignment
         { if (checkInputs())
             {
 
-                String commandString = "UPDATE bugList SET [Class] = @Class, [Method] = @Method, [Code Block] = @Code, [Line Number] = @Line, [Code Author] = @Author  WHERE App = @App";
+                String commandString = "UPDATE bugList SET [Class] = @Class, [Method] = @Method, [Code Block] = @Code, [Line Number] = @Line, [Code Author] = @Author  WHERE Bug = @Bug";
 
 
-            insertRecord(classBox.Text, methodBox.Text, codeBox.Text, lineBox.Text, authorName.Text, comboBox1.Text, commandString);
+            insertRecord(classBox.Text, methodBox.Text, codeBox.Text, lineBox.Text, authorName.Text, comboBox2.Text, commandString);
          cleartxtBoxes();
 
     }

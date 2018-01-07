@@ -19,11 +19,12 @@ namespace assignment
             InitializeComponent();
             //generates a list of bugs reported
             populateListBox();
+            
         }
         
         public void cleartxtBoxes() 
         {
-            txtId.Text = txtName.Text = txtAddress.Text = "";
+            txtId.Text = txtName.Text = txtAddress.Text = Cause.Text = "";
         }
 
         public bool checkInputs() 
@@ -63,6 +64,10 @@ namespace assignment
             }
 
         }
+        
+
+        
+        
         public void populateListBox()
         {
             mySqlConnection =
@@ -86,6 +91,7 @@ namespace assignment
                     lbxstudents.Items.Add(mySqlDataReader["App"] + " " +
                            mySqlDataReader["Bug"] + " " + mySqlDataReader["Cause"]);
                     lbxstudents.Items.Add("********************");
+                    
 
 
                 }
