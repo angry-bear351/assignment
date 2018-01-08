@@ -150,9 +150,9 @@
         #endregion
 
         private System.Windows.Forms.ListBox lbxstudents;
-        private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.TextBox txtName;
+        public System.Windows.Forms.TextBox txtId;
+        public System.Windows.Forms.TextBox txtAddress;
+        public System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

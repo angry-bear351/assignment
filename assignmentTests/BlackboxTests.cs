@@ -12,13 +12,25 @@ namespace assignment.Tests
     public class BlackboxTests
     {
         [TestMethod()]
-        public void BlackboxTest()
+        public void bbCheckInputsTest()
         {
-            
-            
+            Blackbox blackbox = new Blackbox();
+			PrivateObject obj = new PrivateObject(blackbox);
+			blackbox.txtId.Text = "Test1";
+			blackbox.txtAddress.Text = "test2";
+			blackbox.txtName.Text = "test3";
 
 
-            Assert.Fail();
+
+            Assert.AreEqual(true,obj.Invoke("checkInputs"));
         }
-    }
+		[TestMethod()]
+		public void abCheckInputTest_Empty()
+		{
+			Blackbox blackbox = new Blackbox();
+			PrivateObject obj = new PrivateObject(blackbox);
+
+			Assert.AreEqual(false, obj.Invoke("checkInputs"));
+		}
+	}
 }

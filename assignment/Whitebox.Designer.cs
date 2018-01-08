@@ -230,18 +230,18 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox classBox;
-        private System.Windows.Forms.TextBox methodBox;
-        private System.Windows.Forms.TextBox codeBox;
+        public System.Windows.Forms.TextBox classBox;
+        public System.Windows.Forms.TextBox methodBox;
+        public System.Windows.Forms.TextBox codeBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox lineBox;
+        public System.Windows.Forms.TextBox lineBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox authorName;
+        public System.Windows.Forms.TextBox authorName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox2;

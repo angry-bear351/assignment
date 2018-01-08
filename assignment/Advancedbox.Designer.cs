@@ -197,13 +197,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox bugbox;
         private System.Windows.Forms.ListBox morebox;
-        private System.Windows.Forms.TextBox commentBox;
+        public System.Windows.Forms.TextBox commentBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox fixedBox;
-        private System.Windows.Forms.TextBox fixedByBox;
+        public System.Windows.Forms.TextBox fixedBox;
+        public System.Windows.Forms.TextBox fixedByBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateBox;

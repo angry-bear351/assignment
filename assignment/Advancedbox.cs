@@ -49,8 +49,11 @@ namespace assignment
         {
             bool rtnvalue = true;
 
-            if (string.IsNullOrEmpty(commentBox.Text))
-            {
+            if (string.IsNullOrEmpty(commentBox.Text)||
+					string.IsNullOrEmpty(fixedByBox.Text)||
+					string.IsNullOrEmpty(fixedBox.Text))
+
+			{
                 MessageBox.Show("Error: Please check your inputs");
                 rtnvalue = false;
             }
